@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Henk",
+    "skill": "Unity"
+  },
+  {
+    "id": 2,
+    "name": "Piet",
+    "skill": "Front-end"
+  },
+  {
+    "id": 3,
+    "name": "Klaas",
+    "skill": "Backend"
+  },
+  {
+    "id": 4,
+    "name": "Jan",
+    "skill": "Cloud"
+  },
+  {
+    "id": 5,
+    "name": "Karel",
+    "skill": "Dotnet"
+  },
+  {
+    "id": 6,
+    "name": "Henk 2",
+    "skill": "AI"
+  }
+]

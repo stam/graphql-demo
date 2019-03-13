@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Oracle",
+    "location": "Amsterdam"
+  },
+  {
+    "id": 2,
+    "name": "Bright Cubes",
+    "location": "Eindhoven"
+  },
+  {
+    "id": 3,
+    "name": "Philips",
+    "location": "Eindhoven"
+  },
+  {
+    "id": 4,
+    "name": "Cyclomedia",
+    "location": "Zaltbommel"
+  }
+]

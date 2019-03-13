@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "consultant": "Jan",
+    "company": "Oracle",
+    "description": "Cloud"
+  },
+  {
+    "id": 1,
+    "consultant": null,
+    "company": "Oracle",
+    "description": "Legal"
+  },
+  {
+    "id": 1,
+    "consultant": "Piet",
+    "company": "Bright Cubes",
+    "description": "Frontend"
+  },
+  {
+    "id": 1,
+    "consultant": "Henk 2",
+    "company": "Philips",
+    "description": "AI"
+  },
+  {
+    "id": 1,
+    "consultant": "",
+    "company": "Cyclomedia",
+    "description": "Hardware"
+  }
+]
