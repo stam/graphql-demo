@@ -28,8 +28,7 @@ var schema = GraphQL.buildSchema(`
   }
 
   type Mutation {
-    addJob(job: InputJob!): Job
-    addConsultantToJob(consultantId: Int, jobId: Int): Job
+    addConsultantToJob(consultant: ID!, job: ID!): Job
   }
 
   type Consultant {
@@ -104,8 +103,25 @@ var root = {
   consultant: args => new Consultant(repository.consultant.find(args)),
   consultants: ({ filter }) => repository.consultant.filter(filter).map(consultant => new Consultant(consultant)),
 
-  addJob: () => job,
-  addConsultantToJob: (bla) => job,
+  addConsultantToJob: ({ consultant, job }) => {
+    const c = new Consultant(repository.consultant.find({ id: parseInt(consultant)}))
+    const j = new Job(repository.job.find({ id: parseInt(job)}))
+
+    if (!c) {
+      throw new Error(`NotFound: Consultant with id ${consultant} not found`)
+    }
+    if (!j) {
+      throw new Error(`NotFound: Job with id ${job} not found`)
+    }
+    if (c.job()) {
+      throw new Error(`Validation: Consultant ${consultant} already has a job`);
+    }
+    if (j.consultant()) {
+      throw new Error(`Validation: Job ${job} is already filled`);
+    }
+    j.consultantName = c.name;
+    return j
+  },
 };
 
 var app = express();
