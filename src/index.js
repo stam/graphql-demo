@@ -19,12 +19,12 @@ const { Job, Company, Consultant } = require('./models');
 var schema = GraphQL.buildSchema(`
   type Query {
     hello: String
-    job(location: String): Job
-    jobs: [Job!]
+    job(description: String!): Job
+    jobs(filter: JobFilter): [Job!]
     company(name: String!): Company
     companies: [Company!]
     consultant(name: String!): Consultant
-    consultants: [Consultant!]
+    consultants(filter: ConsultantFilter): [Consultant!]
   }
 
   type Mutation {
@@ -40,10 +40,10 @@ var schema = GraphQL.buildSchema(`
   }
 
   type Job {
-    id: ID
+    id: ID!
     consultant: Consultant
-    company: Company
-    description: String
+    company: Company!
+    description: String!
     hours: Int
   }
 
@@ -51,6 +51,17 @@ var schema = GraphQL.buildSchema(`
     id: ID
     name: String
     location: String
+  }
+
+  input JobFilter {
+    description: String
+    company: String
+    consultant: String
+  }
+
+  input ConsultantFilter {
+    skill: String
+    job: String
   }
 
   input InputJob {
@@ -78,7 +89,13 @@ const job = {
 // The root provides a resolver function for each API endpoint
 var root = {
   hello: () => 'Hello world!',
-  job: args => new Job(repository.job.find(args)),
+  job: args => {
+    const job = repository.job.find(args);
+    if (!job) {
+      return null;
+    }
+    return new Job(job)
+  },
   jobs: ({ filter }) => repository.job.filter(filter).map(job => new Job(job)),
 
   company: args => new Company(repository.company.find(args)),

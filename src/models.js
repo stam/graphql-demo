@@ -6,9 +6,10 @@ class Consultant {
   }
 
   job() {
-    const job = repository.job.filter({ consultant: this.name});
-    console.log('consultant.job', this.name, job.id, new Job(job));
-
+    const job = repository.job.find({ consultant: this.name});
+    if (!job) {
+      return null;
+    }
     return new Job(job);
   }
 }
@@ -28,12 +29,15 @@ class Job {
 
   company() {
     const company = repository.company.find({ name: this.companyName });
-    return new User(company)
+    return new Company(company)
   }
 
   consultant() {
     const consultant = repository.consultant.find({ name: this.consultantName });
-    return new Site(consultant)
+    if (!consultant) {
+      return null;
+    }
+    return new Consultant(consultant)
   }
 }
 

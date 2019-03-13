@@ -6,26 +6,32 @@
     "description": "Cloud"
   },
   {
-    "id": 1,
+    "id": 2,
     "consultant": null,
     "company": "Oracle",
     "description": "Legal"
   },
   {
-    "id": 1,
+    "id": 3,
     "consultant": "Piet",
     "company": "Bright Cubes",
     "description": "Frontend"
   },
   {
-    "id": 1,
+    "id": 4,
+    "consultant": null,
+    "company": "Bright Cubes",
+    "description": "Backend"
+  },
+  {
+    "id": 5,
     "consultant": "Henk 2",
     "company": "Philips",
     "description": "AI"
   },
   {
-    "id": 1,
-    "consultant": "",
+    "id": 6,
+    "consultant": null,
     "company": "Cyclomedia",
     "description": "Hardware"
   }
